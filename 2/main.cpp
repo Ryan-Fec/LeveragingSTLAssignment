@@ -9,6 +9,8 @@ int main() {
     auto integers = randomIntegers();
     std::cout << "Initial: " << integers << "\n";
 
-    // TODO: make the sequence a bitonic sequence
-    std::cout << "Bitonic: " << "TODO" << "\n";
+    std::sort(std::begin(integers), integers.begin() + integers.size() / 2);
+    std::sort(integers.begin() + integers.size() / 2, std::end(integers));
+    std::reverse(integers.begin() + integers.size() / 2, std::end(integers));
+    std::cout << "Bitonic: " << integers << "\n";
 }
