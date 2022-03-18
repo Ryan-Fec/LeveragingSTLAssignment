@@ -9,6 +9,8 @@ int main() {
     auto cars = randomCars();
     std::cout << "Initial: " << cars << "\n";
 
-    // TODO: print out the cars in reverse order
-    std::cout << "Reversed: " << "TODO" << "\n";
-}
+    std::cout << "Reversed: ";
+    for (auto it = cars.rbegin(); it != cars.rend(); it++) {
+        std::cout << *it << "\n";
+    }
+    std::cout << "\n";
