@@ -29,10 +29,24 @@ int main() {
     std::cout << "Cars: " << cars << "\n";
 
     std::vector<Tag<Car>> taggedCars;
-    // TODO: populate 'taggedCars' with elements of type Tag<Car> where the tag is set to true
-    //  only if the price < 10,000 or if the vin starts with a letter in A...F
+    for (auto car : cars) {
+        if (car.price() < 10000.00 || (std::strcmp(car.vin().substr(0, 1).c_str(), "A")) >= 0 && std::strcmp(car.vin().substr(0, 1).c_str(), "F") <= 0) {
+            Tag tag{ true, car };
+            taggedCars.push_back(tag);
+        }
+        else {
+            Tag tag{ false, car }; 
+            taggedCars.push_back(tag);
+        }
+    }
+    if (char("B") <= char("F")) {
+        std::cout << "True";
+    }
+    std::partition(taggedCars.begin(), taggedCars.end(), [](Tag<Car> tag) {
+        return tag.isTagged();
+        });
 
-    // TODO: arrange `taggedCars` so that the elements tagged `true` are at the beginning
-    //  and `false` elements are at the ened
+
+
     std::cout << "Tagged Cars: " << taggedCars << "\n";
 }
